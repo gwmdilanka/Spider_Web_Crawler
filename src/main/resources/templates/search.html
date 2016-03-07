@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Search Engine</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+  </head>
+
+  <body>
+    <h2 align="center">Search Engine</h2>
+    <form method="POST" action="search">
+   
+    <table align="center" cellpadding="5">
+    <tr>
+    <td><label for="key word">Search Word:</label></td>
+    <td><input type="text" name="queryStr"></input></td>
+    <td><input type="submit"></input></td>    
+    </tr>
+    </table>     
+    </form>
+
+    <ul th:each="searchResult : ${searchResults}">
+      <li>
+      	<span th:text="${searchResult.hitValue}">HitValue</span>
+        <a th:text="${searchResult.resultUrl}" th:href="${searchResult.resultUrl}">Link</a> 
+        <span th:text="${searchResult.resultContent}" th:href="${searchResult.resultContent}">Content</span>               
+      </li>
+    </ul>
+  </body>
+</html>
